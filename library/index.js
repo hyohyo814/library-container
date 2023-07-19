@@ -23,6 +23,7 @@ require('dotenv').config()
 
 const MONGODB_URI = process.env.MONGODB_URI
 const JWT_SECRET = process.env.JWT_SECRET
+const PORT = process.env.PORT
 
 mongoose
   .connect(MONGODB_URI)
@@ -75,7 +76,7 @@ const start = async () => {
         if (auth && auth.startsWith('bearer ')) {
           const decodedToken = jwt.verify(
             auth.substring(7),
-            process.env.JWT_SECRET
+            JWT_SECRET
           )
           const currUser = await User.findById(decodedToken.id)
           return { currUser }
@@ -83,7 +84,6 @@ const start = async () => {
       },
     })
   )
-  const PORT = 4000
 
   httpServer.listen(PORT, () =>
     console.log(`Server is now running on http://localhost:${PORT}`)
