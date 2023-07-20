@@ -6,7 +6,9 @@ COPY . .
 
 EXPOSE 4000
 
-RUN npm ci
+RUN npm install
+
+RUN npm install -g nodemon
 
 CMD ["npm", "run", "dev"]
 

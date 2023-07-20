@@ -1,2 +1,5 @@
 .gitignore
 node_modules
+apollo_http.txt
+apolo_ws.txt
+.env

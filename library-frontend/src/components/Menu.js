@@ -1,5 +1,4 @@
 import { useApolloClient } from '@apollo/client'
-import { useState, useEffect } from 'react'
 
 const Menu = ({setPage, setToken, token}) => {
   const client = useApolloClient()

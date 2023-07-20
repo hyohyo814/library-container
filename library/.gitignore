@@ -1,2 +1,5 @@
 node_modules
 .env
+mongo_url.txt
+jwt_secret.txt
+port_secret.txt

@@ -23,10 +23,10 @@ const authLink = setContext((_, { headers }) => {
 })
 
 const httpLink = new HttpLink({
-  uri: 'http://localhost:4000',
+  uri: process.env.APOLLO_SERVER_HTTP,
 })
 
-const wsLink = new GraphQLWsLink(createClient({ url: 'ws://localhost:4000' }))
+const wsLink = new GraphQLWsLink(createClient({ url: process.env.APOLLO_SERVER_WS }))
 
 const splitLink = split(
   ({ query }) => {
