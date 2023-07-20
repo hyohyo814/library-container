@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  apollo-server:
+    image: library-backend-dev
+    container-name: apollo-server-dev
+    volumes:
+      - ./library/:/usr/src/app
+    secrets:
+      - MONGODB_URI
+      - JWT_SECRET
+      - PORT
+  app:
+    image: library-frontend-dev
+    container_name: library-app-dev
+    volumes:
+      - ./library-frontend/:/usr/src/app
+  nginx:
+    image: nginx:1.20.1
+    container_name: reverse-proxy
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 8080:80
+
+secrets:
+  MONGODB_URI:
+    file: ./library/mongo_url.txt
+  JWT_SECRET:
+    file: ./library/jwt_secret.txt
+  PORT:
+    file: ./library/port_secret.txt

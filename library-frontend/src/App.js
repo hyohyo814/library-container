@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useQuery, useSubscription, useApolloClient } from '@apollo/client'
+import { useQuery, useSubscription } from '@apollo/client'
 import Authors from './components/Authors'
 import Books from './components/Books'
 import NewBook from './components/NewBook'
@@ -31,7 +31,6 @@ const App = () => {
   const [token, setToken] = useState(null)
   const [error, setError] = useState(null)
   const user = useQuery(USER)
-  const client = useApolloClient()
 
   useEffect(() => {
     const exists = localStorage.getItem('loggedInUser')

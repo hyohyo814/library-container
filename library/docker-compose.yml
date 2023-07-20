@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  apollo-server:
+    image: library-backend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 4000:4000
+    volumes:
+      - ./:/usr/src/app
+    secrets:
+      - MONGODB_URI
+      - JWT_SECRET
+      - PORT
+    container_name: apollo-server
+secrets:
+  MONGODB_URI:
+    file: ./mongo_url.txt
+  JWT_SECRET:
+    file: ./jwt_secret.txt
+  PORT:
+    file: ./port_secret.txt
